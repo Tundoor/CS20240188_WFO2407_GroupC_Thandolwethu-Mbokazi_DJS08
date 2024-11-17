@@ -1,21 +1,35 @@
 import React from "react";
 import { useParams, Link, Outlet, NavLink } from "react-router-dom";
-
+import { getHostVans } from "../../api"
 
 function HostVanDetails() {
+    const [error, setError] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
     const { id } = useParams()
     const [currentVan, setCurrentVan] = React.useState(null)
 
     React.useEffect(() => {
-        fetch(`/api/host/vans/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setCurrentVan(data.vans)})
-    }, [])
-    
-    if (!currentVan) {
+        async function loadVans() {
+            setLoading(true)
+            try {
+                const data = await getHostVans(id)
+                setCurrentVan(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadVans()
+    }, [id])
+
+    if (loading) {
         return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
     }
 
     
