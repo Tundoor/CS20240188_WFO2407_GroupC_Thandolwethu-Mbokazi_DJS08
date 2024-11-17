@@ -7,6 +7,7 @@ import Layout from "../Comps/layouts.jsx"
 import Dashboard from "../pages/Hosts/Dashboard"
 import Income from "../pages/Hosts/Income"
 import Reviews from "../pages/Hosts/Reviews.jsx"
+import HostLayout from "../Comps/HostLayout.jsx"
 
 import "../server.js"
 
@@ -16,13 +17,17 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/vans" element={<Vans />} />
-          <Route path="/vans/:id" element={<VanDetail />} />
-          <Route path="/host" element={<Dashboard />} />
-          <Route path="/host/income" element={<Income />} />
-          <Route path="/host/reviews" element={<Reviews />} />
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+            <Route path="vans/:id" element={<VanDetail />} />
+            
+          <Route path="host" element={<HostLayout />}>
+           <Route index element={<Dashboard />} />
+            <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+
         </Route>
       </Routes>
     </BrowserRouter>
