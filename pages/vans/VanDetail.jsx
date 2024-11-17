@@ -1,6 +1,6 @@
  import React from "react"
  import { useParams, Link, useLocation} from "react-router-dom"
- import { getVans } from "../../api"
+ import { getVan } from "../../api"
  
  function VanDetail () {
     const [van, setVan] = React.useState(null)
@@ -13,7 +13,7 @@
         async function loadVans() {
             setLoading(true)
             try {
-                const data = await getVans(id)
+                const data = await getVan(id)
                 setVan(data)
             } catch (err) {
                 setError(err)
