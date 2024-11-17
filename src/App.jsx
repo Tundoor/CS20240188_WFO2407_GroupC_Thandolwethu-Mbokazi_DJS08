@@ -13,6 +13,7 @@ import HostVanDetails from "../pages/Hosts/HostVanDetails.jsx"
 import HostVanInfo from "../pages/Hosts/HostVanInfo"
 import HostVanPricing from "../pages/Hosts/HostVanPricing"
 import HostVanPhotos from "../pages/Hosts/HostVanPhotos"
+import NotFound from "../pages/NotFound.jsx"
 import "../server.js"
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+        <Route path="*" element={<NotFound />} />
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
