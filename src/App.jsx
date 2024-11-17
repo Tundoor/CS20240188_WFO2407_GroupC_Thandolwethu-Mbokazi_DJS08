@@ -15,6 +15,7 @@ import HostVanPricing from "../pages/Hosts/HostVanPricing"
 import HostVanPhotos from "../pages/Hosts/HostVanPhotos"
 import NotFound from "../pages/NotFound.jsx"
 import Login from "../pages/Login"
+import AuthRequired from "../Comps/AuthRequired.jsx"
 import "../server.js"
 
 function App() {
